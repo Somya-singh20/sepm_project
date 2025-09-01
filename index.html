@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Time Scheduler</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <h1>College Time Scheduler</h1>
+  </header>
+
+  <main>
+    <!-- Role Selection -->
+    <section id="roleSelection" class="role-selection">
+      <h2>Select Your Role</h2>
+      <div class="role-grid">
+        <button class="role-card" onclick="selectRole('admin')">Admin</button>
+        <button class="role-card" onclick="selectRole('student')">Student</button>
+        <button class="role-card" onclick="selectRole('faculty')">Faculty</button>
+      </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="adminPanel" class="panel hidden">
+      <button class="backBtn" onclick="goBack()">⬅ Back</button>
+      <h2>Admin · Add Timetable (Department-wise)</h2>
+
+      <form id="adminForm" class="card">
+        <div class="grid-3">
+          <label>Department
+            <select id="departmentSelect" required>
+              <option value="">Select Department</option>
+              <option>CSE</option>
+              <option>AIML</option>
+              <option>ISE</option>
+              <option>ECE</option>
+              <option>Civil</option>
+            </select>
+          </label>
+
+          <label>Day
+            <select id="adminDay" required>
+              <option value="">Select Day</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+            </select>
+          </label>
+
+          <label>Number of Subjects
+            <input type="number" id="numSubjects" min="1" max="12" placeholder="e.g. 6" required/>
+          </label>
+        </div>
+
+        <div id="subjectInputs" class="subject-rows"></div>
+
+        <div class="actions">
+          <button type="submit">Add to Timetable</button>
+          <button type="button" id="viewGeneratedBtn" class="secondary">Open Generated Timetable</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Student Panel -->
+    <section id="studentPanel" class="panel hidden">
+      <button class="backBtn" onclick="goBack()">⬅ Back</button>
+      <h2>Student Login</h2>
+      <form id="studentLogin" class="card">
+        <div class="grid-2">
+          <label>Name
+            <input type="text" id="studentName" placeholder="Your full name" required />
+          </label>
+          <label>Department
+            <select id="studentDept" required>
+              <option value="">Select Department</option>
+              <option>CSE</option>
+              <option>AIML</option>
+              <option>ISE</option>
+              <option>ECE</option>
+              <option>Civil</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit">View My Timetable</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Faculty Panel -->
+    <section id="facultyPanel" class="panel hidden">
+      <button class="backBtn" onclick="goBack()">⬅ Back</button>
+      <h2>Faculty</h2>
+      <form id="facultyLogin" class="card">
+        <label>Faculty Name
+          <input type="text" id="facultyName" placeholder="Enter your name (case-insensitive)" required />
+        </label>
+        <div class="actions">
+          <button type="submit">Show My Classes</button>
+        </div>
+      </form>
+
+      <div id="facultyTimetable" class="faculty-timetable"></div>
+    </section>
+  </main>
+
+  <!-- In-app toast reminder -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

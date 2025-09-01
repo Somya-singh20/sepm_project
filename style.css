@@ -1,0 +1,168 @@
+:root {
+  --primary: #2ecc71;        /* fresh green */
+  --primary-dark: #27ae60;   /* deep green */
+  --accent: #16a085;         /* teal accent */
+  --bg: #111;                /* dark background */
+  --card: #1c1c1c;           /* card background */
+  --text: #eaeaea;           /* light text */
+  --muted: #aaa;             /* muted text */
+  --danger: #e74c3c;         /* red for back/delete */
+  --danger-dark: #c0392b;    /* darker red */
+  --shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  padding: 18px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+h1 { margin: 0; font-weight: 600; }
+h2 { margin: 0 0 14px; font-weight: 600; }
+main { padding: 24px; }
+
+/* Role selection */
+.role-selection { max-width: 900px; margin: 0 auto; text-align: center; }
+.role-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.role-card {
+  background: var(--card);
+  color: var(--text);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+}
+.role-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  background: #222;
+}
+
+/* Panels */
+.panel { max-width: 1000px; margin: 0 auto; }
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Layout grids */
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+
+label { display: block; font-weight: 500; }
+input, select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  outline: none;
+  background: #2a2a2a;
+  color: var(--text);
+  transition: border-color .15s ease, background .15s ease;
+}
+input:focus, select:focus {
+  border-color: var(--primary);
+  background: #333;
+}
+
+/* Subject rows */
+.subject-rows { margin-top: 12px; display: grid; gap: 10px; }
+.subject-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr 0.9fr;
+  gap: 10px;
+  align-items: end;
+}
+.subject-row .row-title { grid-column: 1/-1; font-size: .95rem; color: var(--muted); }
+
+/* Buttons */
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: background .2s ease, transform .1s ease;
+}
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+button.secondary {
+  background: var(--accent);
+  color: #fff;
+}
+button.secondary:hover { filter: brightness(1.1); }
+.backBtn {
+  background: var(--danger);
+  margin-bottom: 12px;
+}
+.backBtn:hover { background: var(--danger-dark); }
+
+/* Faculty timetable */
+.faculty-timetable { margin-top: 16px; display: grid; gap: 10px; }
+.faculty-day {
+  background: var(--card);
+  border-left: 6px solid var(--primary);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.faculty-class {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--primary-dark);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Toast (reminders) */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--card);
+  color: var(--text);
+  border-left: 6px solid var(--primary);
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.5);
+  min-width: 260px;
+  max-width: 380px;
+  z-index: 1000;
+}
+.toast .title { font-weight: 700; margin-bottom: 6px; }
+.toast .meta { font-size: .9rem; color: var(--muted); }
+.hidden { display: none; }
+
+/* Responsive */
+@media (max-width:720px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .subject-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
